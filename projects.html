@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Projects</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="index.html" class="nav-logo">Portfolio</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="menu-btn">
+                <span class="material-symbols-rounded">menu</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section class="projects-header">
+            <h1>My Projects</h1>
+            <p>A collection of my work in development and game design</p>
+        </section>
+
+        <section class="projects-grid">
+            <!-- Project cards will be dynamically added via JavaScript -->
+        </section>
+
+        <section class="project-filters">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="game">Games</button>
+                <button class="filter-btn" data-filter="other">Other</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 Portfolio. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/BrushWild" target="_blank" class="social-link">
+                    <span class="material-symbols-rounded">code</span>
+                </a>
+                <button class="theme-toggle" aria-label="Toggle theme">
+                    <span class="material-symbols-rounded">dark_mode</span>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

@@ -93,8 +93,8 @@ footer {
 .nav-links {
     display: none;
     position: absolute;
-    top: 100%;
-    right: 1rem;
+    top: calc(100% + 1rem);
+    right: 0;
     background-color: var(--color-surface);
     border-radius: 0.75rem;
     padding: 0.75rem;
@@ -261,6 +261,8 @@ footer {
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     transition: var(--transition);
+    position: relative;
+    top: -0.5rem;
 }
 .social-link:hover {
     color: var(--color-primary);
@@ -288,6 +290,8 @@ footer {
     color: var(--color-on-surface);
     transition: transform 0.3s ease;
     border-radius: 0.5rem;
+    position: relative;
+    top: -0.5rem;
 }
 
 .theme-toggle .material-symbols-rounded {
@@ -311,6 +315,7 @@ footer {
     color: var(--color-on-surface);
     transition: transform 0.3s ease;
     border-radius: 0.5rem;
+    position: relative;
 }
 
 .menu-btn .material-symbols-rounded {
@@ -343,6 +348,7 @@ footer {
     transition: var(--transition);
     display: inline-block;
     width: 85%;
+    text-align: left;
 }
 .nav-links a:hover,
 .nav-links a.active {

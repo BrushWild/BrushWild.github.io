@@ -31,7 +31,23 @@ if (savedTheme) {
 // Mobile menu functionality
 const menuBtn = document.querySelector('.menu-btn');
 const navLinks = document.querySelector('.nav-links');
+const menuIcon = menuBtn.querySelector('.material-symbols-rounded');
 
-menuBtn.addEventListener('click', () => {
-    navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+menuBtn.style.display = 'block';
+
+menuBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    navLinks.classList.toggle('active');
+    menuBtn.classList.toggle('active');
+    // Toggle between menu and close icons
+    menuIcon.textContent = navLinks.classList.contains('active') ? 'close' : 'menu';
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!menuBtn.contains(e.target) && !navLinks.contains(e.target) && navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        menuBtn.classList.remove('active');
+        menuIcon.textContent = 'menu';
+    }
 });

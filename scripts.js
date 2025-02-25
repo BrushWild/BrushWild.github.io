@@ -51,3 +51,50 @@ document.addEventListener('click', (e) => {
         menuIcon.textContent = 'menu';
     }
 });
+
+// Contact form submission handler
+function handleSubmit(event) {
+    event.preventDefault();
+
+    // Get form data
+    const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        message: document.getElementById('message').value
+    };
+
+    // Initialize EmailJS with your public key
+    emailjs.init("NSY4j2wW3Slq4vLYL");
+
+    // Send email using EmailJS
+    emailjs.send("service_4kwzyxd", "template_r38w6p8", {
+        to_email: "asneakymonkey+githubio@gmail.com",
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message
+    }).then(
+        function(response) {
+            console.log("SUCCESS", response);
+            event.target.reset();
+            alert('Message sent successfully!');
+        },
+        function(error) {
+            console.log("FAILED", error);
+            alert('Failed to send message. Please try again.');
+        }
+    );
+
+    return false;
+}
+
+//     // Log form data to console
+//     console.log('Form submission:', formData);
+
+//     // Clear form
+//     event.target.reset();
+
+//     // Show success message (you can enhance this with a proper UI notification)
+//     alert('Message sent successfully!');
+
+//     return false;
+// }

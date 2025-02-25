@@ -87,14 +87,59 @@ function handleSubmit(event) {
     return false;
 }
 
-//     // Log form data to console
-//     console.log('Form submission:', formData);
+const projects = [
+    {
+        title: "Diceware Password Generator",
+        image: "images/dice/dice-3.svg",
+        description: "Generate diceware passwords for your diceware password manager.",
+        github: "https://github.com/BrushWild/DicewareV2",
+        hasDemo: true,
+        demoUrl: "https://brushwild.github.io/DicewareV2/"
+    }
+    // {
+    //     title: "Project 2",
+    //     image: "images/project2.jpg",
+    //     description: "Description of project 2.",
+    //     github: "https://github.com/yourusername/project2"
+    // },
+    // {
+    //     title: "Project 3",
+    //     image: "images/project3.jpg",
+    //     description: "Description of project 3.",
+    //     github: "https://github.com/yourusername/project3"
+    // }
+];
 
-//     // Clear form
-//     event.target.reset();
+function loadProjects() {
+    const container = document.querySelector(".projects-grid");
+    if (!container) {
+        console.error("Projects grid container not found!");
+        return;
+    }
 
-//     // Show success message (you can enhance this with a proper UI notification)
-//     alert('Message sent successfully!');
+    try {
+        container.innerHTML = ""; // Clear existing content
 
-//     return false;
-// }
+        projects.forEach(project => {
+            const projectElement = document.createElement("div");
+            projectElement.classList.add("project-card");
+
+            projectElement.innerHTML = `
+                <img src="${project.image}" alt="${project.title}">
+                <h3>${project.title}</h3>
+                <p>${project.description}</p>
+                <div class="project-buttons">
+                    <a href="${project.github}" target="_blank" class="btn primary">View on GitHub</a>
+                    ${project.hasDemo ? `<a href="${project.demoUrl}" target="_blank" class="btn secondary">Try Demo</a>` : ''}
+                </div>
+            `;
+
+            container.appendChild(projectElement);
+        });
+    } catch (error) {
+        console.error("Error loading projects:", error);
+    }
+}
+
+// Load projects when the page loads
+document.addEventListener("DOMContentLoaded", loadProjects);

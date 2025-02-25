@@ -111,6 +111,7 @@ const projects = [
 ];
 
 function loadProjects() {
+    console.log('Initializing project loading...');
     const container = document.querySelector(".projects-grid");
     if (!container) {
         console.error("Projects grid container not found!");
@@ -118,9 +119,12 @@ function loadProjects() {
     }
 
     try {
+        console.log(`Found ${projects.length} projects to load`);
+        console.log('Clearing existing content...');
         container.innerHTML = ""; // Clear existing content
 
-        projects.forEach(project => {
+        projects.forEach((project, index) => {
+            console.log(`Loading project ${index + 1}/${projects.length}: ${project.title}`);
             const projectElement = document.createElement("div");
             projectElement.classList.add("project-card");
 
@@ -136,6 +140,7 @@ function loadProjects() {
 
             container.appendChild(projectElement);
         });
+        console.log('Successfully loaded all projects');
     } catch (error) {
         console.error("Error loading projects:", error);
     }

@@ -106,7 +106,7 @@ const projects = [
     {
         title: "Diceware Password Generator",
         image: `images/dice/dice-${getRandomInt(1, 6)}.svg`,
-        description: "Generate diceware passwords for your diceware password manager.",
+        description: "Generate cryptographically secure passphrases using true random number simulation. This implementation follows the classic Diceware method, creating memorable yet strong passwords by combining randomly selected words. Perfect for securing accounts while maintaining human-memorability.",
         github: "https://github.com/BrushWild/DicewareV2",
         hasDemo: true,
         demoUrl: "https://brushwild.github.io/DicewareV2/"

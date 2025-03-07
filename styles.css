@@ -308,7 +308,8 @@ footer {
     box-shadow: var(--shadow-sm);
 }
 .social-links {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     margin-top: 1rem;
 }

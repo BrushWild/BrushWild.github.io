@@ -1,18 +1,27 @@
-// Theme toggle functionality
+// Theme toggle functionality with enhanced animation
 const themeToggle = document.querySelector('.theme-toggle');
 const themeIcon = themeToggle.querySelector('.material-symbols-rounded');
 
 // Set initial theme (dark mode by default)
 document.documentElement.setAttribute('data-theme', 'dark');
 
-// Function to toggle theme
+// Function to toggle theme with smooth transition
 function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
     const newIcon = newTheme === 'dark' ? 'dark_mode' : 'light_mode';
     
+    // Add transition class for smooth animation
+    document.documentElement.classList.add('theme-transition');
+    
+    // Set the new theme
     document.documentElement.setAttribute('data-theme', newTheme);
     themeIcon.textContent = newIcon;
+    
+    // Remove transition class after animation completes
+    setTimeout(() => {
+        document.documentElement.classList.remove('theme-transition');
+    }, 1000);
     
     // Save theme preference
     localStorage.setItem('theme', newTheme);

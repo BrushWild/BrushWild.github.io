@@ -96,10 +96,24 @@ function handleSubmit(event) {
     return false;
 }
 
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 const projects = [
     {
         title: "Diceware Password Generator",
-        image: "images/dice/dice-3.svg",
+        image: `images/dice/dice-${getRandomInt(1, 6)}.svg`,
+        description: "Generate diceware passwords for your diceware password manager.",
+        github: "https://github.com/BrushWild/DicewareV2",
+        hasDemo: true,
+        demoUrl: "https://brushwild.github.io/DicewareV2/"
+    },
+    {
+        title: "Diceware Password Generator",
+        image: `images/dice/dice-${getRandomInt(1, 6)}.svg`,
         description: "Generate diceware passwords for your diceware password manager.",
         github: "https://github.com/BrushWild/DicewareV2",
         hasDemo: true,
@@ -138,7 +152,7 @@ function loadProjects() {
             projectElement.classList.add("project-card");
 
             projectElement.innerHTML = `
-                <img src="${project.image}" alt="${project.title}">
+                <img src="${project.image}" alt="${project.title}" width="128" height="128">
                 <h3>${project.title}</h3>
                 <p>${project.description}</p>
                 <div class="project-buttons">

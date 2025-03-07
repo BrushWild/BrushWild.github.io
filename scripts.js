@@ -112,12 +112,10 @@ const projects = [
         demoUrl: "https://brushwild.github.io/DicewareV2/"
     },
     {
-        title: "Diceware Password Generator",
-        image: `images/dice/dice-${getRandomInt(1, 6)}.svg`,
-        description: "Generate diceware passwords for your diceware password manager.",
-        github: "https://github.com/BrushWild/DicewareV2",
-        hasDemo: true,
-        demoUrl: "https://brushwild.github.io/DicewareV2/"
+        title: "Dummy Project",
+        image: `images/github.svg`,
+        description: "Lorem ipsum odor amet, consectetuer adipiscing elit. Curae mollis congue torquent; libero neque felis pharetra.",
+        github: "https://github.com/BrushWild",
     }
     // {
     //     title: "Project 2",
@@ -132,6 +130,16 @@ const projects = [
     //     github: "https://github.com/yourusername/project3"
     // }
 ];
+
+function rollDice(imgElement) {
+    let currentRoll = 1;
+    const rollInterval = setInterval(() => {
+        currentRoll = (currentRoll % 6) + 1;
+        imgElement.src = `images/dice/dice-${currentRoll}.svg`;
+    }, 150);
+
+    return rollInterval;
+}
 
 function loadProjects() {
     console.log('Initializing project loading...');
@@ -160,6 +168,23 @@ function loadProjects() {
                     ${project.hasDemo ? `<a href="${project.demoUrl}" target="_blank" class="btn secondary">Try Demo</a>` : ''}
                 </div>
             `;
+
+            // Add dice rolling animation for Diceware Password Generator cards
+            if (project.title === "Diceware Password Generator") {
+                const diceImage = projectElement.querySelector('img');
+                let rollInterval;
+
+                projectElement.addEventListener('mouseenter', () => {
+                    rollInterval = rollDice(diceImage);
+                });
+
+                projectElement.addEventListener('mouseleave', () => {
+                    if (rollInterval) {
+                        clearInterval(rollInterval);
+                        diceImage.src = `images/dice/dice-${getRandomInt(1, 6)}.svg`;
+                    }
+                });
+            }
 
             container.appendChild(projectElement);
         });

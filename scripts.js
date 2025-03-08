@@ -150,17 +150,17 @@ function rollDice(imgElement) {
 let activeFilter = 'all';
 
 function filterProjects(category) {
-    console.log(`Filtering projects for category: ${category}`);
+    // console.log(`Filtering projects for category: ${category}`);
     const projectCards = document.querySelectorAll('.project-card');
     const filterButtons = document.querySelectorAll('.filter-btn');
     
-    console.log(`Found ${projectCards.length} total project cards`);
+    // console.log(`Found ${projectCards.length} total project cards`);
     
     // Update active filter button
     filterButtons.forEach(btn => {
         btn.classList.toggle('active', btn.dataset.filter === category);
     });
-    console.log(`Updated active state of filter buttons`);
+    // console.log(`Updated active state of filter buttons`);
     
     activeFilter = category;
     
@@ -176,7 +176,7 @@ function filterProjects(category) {
         }
     });
     
-    console.log(`Filtering complete: ${visibleCount} projects visible out of ${projectCards.length}`);
+    // console.log(`Filtering complete: ${visibleCount} projects visible out of ${projectCards.length}`);
 }
 
 function loadProjects() {
@@ -204,7 +204,7 @@ function loadProjects() {
                 <p>${project.description}</p>
                 <div class="project-buttons">
                     <a href="${project.github}" target="_blank" class="btn primary">View on GitHub</a>
-                    ${project.hasDemo ? `<a href="${project.demoUrl}" target="_blank" class="btn secondary">Try Demo</a>` : ''}
+                    ${project.hasDemo ? `<a href="${project.demoUrl}" target="_blank" class="btn secondary">Try Me!</a>` : ''}
                 </div>
             `;
 

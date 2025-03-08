@@ -125,26 +125,16 @@ const projects = [
         description: "Generate cryptographically secure passphrases using true random number simulation. This implementation follows the classic Diceware method, creating memorable yet strong passwords by combining randomly selected words. Perfect for securing accounts while maintaining human-memorability.",
         github: "https://github.com/BrushWild/DicewareV2",
         hasDemo: true,
-        demoUrl: "https://brushwild.github.io/DicewareV2/"
+        demoUrl: "https://brushwild.github.io/DicewareV2/",
+        categories: ["web"]
     },
     {
         title: "Dummy Project",
         image: `images/github.svg`,
         description: "Lorem ipsum odor amet, consectetuer adipiscing elit. Curae mollis congue torquent; libero neque felis pharetra.",
         github: "https://github.com/BrushWild",
+        categories: ["web", "game"]
     }
-    // {
-    //     title: "Project 2",
-    //     image: "images/project2.jpg",
-    //     description: "Description of project 2.",
-    //     github: "https://github.com/yourusername/project2"
-    // },
-    // {
-    //     title: "Project 3",
-    //     image: "images/project3.jpg",
-    //     description: "Description of project 3.",
-    //     github: "https://github.com/yourusername/project3"
-    // }
 ];
 
 function rollDice(imgElement) {
@@ -155,6 +145,38 @@ function rollDice(imgElement) {
     }, 150);
 
     return rollInterval;
+}
+
+let activeFilter = 'all';
+
+function filterProjects(category) {
+    console.log(`Filtering projects for category: ${category}`);
+    const projectCards = document.querySelectorAll('.project-card');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    
+    console.log(`Found ${projectCards.length} total project cards`);
+    
+    // Update active filter button
+    filterButtons.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.filter === category);
+    });
+    console.log(`Updated active state of filter buttons`);
+    
+    activeFilter = category;
+    
+    // Filter projects
+    let visibleCount = 0;
+    projectCards.forEach(card => {
+        const projectCategories = card.dataset.filter.split(',');
+        if (category === 'all' || projectCategories.includes(category)) {
+            card.style.display = 'flex';
+            visibleCount++;
+        } else {
+            card.style.display = 'none';
+        }
+    });
+    
+    console.log(`Filtering complete: ${visibleCount} projects visible out of ${projectCards.length}`);
 }
 
 function loadProjects() {
@@ -174,6 +196,7 @@ function loadProjects() {
             console.log(`Loading project ${index + 1}/${projects.length}: ${project.title}`);
             const projectElement = document.createElement("div");
             projectElement.classList.add("project-card");
+            projectElement.dataset.filter = project.categories.join(',');
 
             projectElement.innerHTML = `
                 <img src="${project.image}" alt="${project.title}" width="128" height="128">
@@ -204,11 +227,25 @@ function loadProjects() {
 
             container.appendChild(projectElement);
         });
+
+        // Apply initial filter
+        filterProjects(activeFilter);
+        
         console.log('Successfully loaded all projects');
     } catch (error) {
         console.error("Error loading projects:", error);
     }
 }
+
+// Add event listeners to filter buttons
+document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            filterProjects(button.dataset.filter);
+        });
+    });
+});
 
 // Load projects when the page loads
 document.addEventListener("DOMContentLoaded", loadProjects);

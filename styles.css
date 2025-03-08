@@ -30,7 +30,11 @@
     --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
     --transition: all 0.3s ease;
 }
-
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
 :root {
     color-scheme: dark;
     transition: background-color 1s ease, color 1s ease;
@@ -83,14 +87,21 @@ footer {
     align-items: center;
 }
 .nav-logo {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--color-on-background);
     text-decoration: none;
     transition: var(--transition);
+    display: flex;
+    align-items: center;
 }
-.nav-logo:hover {
-    color: var(--color-primary);
+.nav-logo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+.nav-logo:hover img {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-sm);
 }
 .nav-links {
     display: none;
@@ -352,8 +363,18 @@ footer {
     transition: transform 0.3s ease;
     border-radius: 0.5rem;
     position: relative;
-    top: -0.5rem;
 }
+
+/* .menu-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: var(--color-on-surface);
+    transition: transform 0.3s ease;
+    border-radius: 0.5rem;
+    position: relative;
+} */
 
 .theme-toggle .material-symbols-rounded {
     transition: transform 0.3s ease;

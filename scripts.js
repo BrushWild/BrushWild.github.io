@@ -44,6 +44,22 @@ const menuIcon = menuBtn.querySelector('.material-symbols-rounded');
 
 menuBtn.style.display = 'block';
 
+// Set active navigation link based on current page
+function setActiveNavLink() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinksItems = document.querySelectorAll('.nav-links a');
+    
+    navLinksItems.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === currentPage) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Call setActiveNavLink on page load
+setActiveNavLink();
+
 menuBtn.addEventListener('click', (e) => {
     e.stopPropagation();
     navLinks.classList.toggle('active');
